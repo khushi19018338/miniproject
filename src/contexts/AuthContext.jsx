@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { getItem, setItem, removeItem } from "@/utils/storage";
+import { getItem, setItem, removeItem } from "../utils/storage";
+
 
 const AuthContext = createContext(undefined);
 

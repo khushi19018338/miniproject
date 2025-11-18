@@ -1,18 +1,13 @@
-const { defineConfig } = require("vite");
-const react = require("@vitejs/plugin-react-swc");
-const path = require("path");
-const { componentTagger } = require("lovable-tagger");
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
+import { componentTagger } from "lovable-tagger";
+import path from "path";
 
-// https://vitejs.dev/config/
-module.exports = defineConfig(({ mode }) => ({
-  server: {
-    host: "::",
-    port: 8080,
-  },
-  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+export default defineConfig(({ mode }) => ({
+  plugins: [react(), componentTagger()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      "@": path.resolve(__dirname, "src"), // <-- This makes '@' point to 'src'
     },
   },
 }));
